@@ -4,7 +4,7 @@ from .models import *
 
 # Create your views here.
 def homepage(request):
-    banners = Banner.objects.all()
+    banners = Banner.objects.filter(ativo=True)
 
     context = {
         'banners': banners,
@@ -13,8 +13,8 @@ def homepage(request):
     return render(request, 'homepage.html', context)
 
 
-def loja(request):
-    produtos = Produto.objects.all()
+def loja(request, nome_categoria=None):
+    produtos = Produto.objects.filter(ativo=True)
 
     context = {
         'produtos': produtos,
