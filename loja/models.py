@@ -16,6 +16,7 @@ class Cliente(models.Model):
 
 class Categoria(models.Model): # Categorias (Masculino, Feminino, Infantil, etc)
     nome = models.CharField(max_length=200, null=True, blank=True)
+    slug = models.CharField(max_length=200, null=True, blank=True)
 
     def __str__(self):
         return str(self.nome)
@@ -23,6 +24,7 @@ class Categoria(models.Model): # Categorias (Masculino, Feminino, Infantil, etc)
 
 class Tipo(models.Model): # Tipos (Camisa, Camiseta, Bermuda, etc)
     nome = models.CharField(max_length=200, null=True, blank=True)
+    slug = models.CharField(max_length=200, null=True, blank=True)
 
     def __str__(self):
         return str(self.nome)

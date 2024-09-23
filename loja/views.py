@@ -18,7 +18,7 @@ def loja(request, nome_categoria=None):
     produtos = Produto.objects.filter(ativo=True)
 
     if nome_categoria:
-        produtos = produtos.filter(categoria__nome=nome_categoria)
+        produtos = produtos.filter(categoria__slug=nome_categoria)
 
     context = {
         'produtos': produtos,
