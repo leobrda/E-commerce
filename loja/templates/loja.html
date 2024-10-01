@@ -15,6 +15,12 @@
                 <label for="{{ tamanho }}">{{ tamanho }}</label>
             {% endfor %}
 
+        <p>Cor</p>
+            {% for cor in cores %}
+                <input type="radio" name="cor" value="{{ cor.nome }}">
+                <label for="{{ cor }}">{{ cor.nome }}</label>
+            {% endfor %}
+
         <p>Categoria</p>
             {% for categoria in categorias %}
                 <input type="radio" name="categoria" value="{{ categoria.slug }}">
