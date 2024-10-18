@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import *
 import uuid
-from .utils import filtrar_produtos, preco_minimo_maximo
+from .utils import filtrar_produtos, preco_minimo_maximo, ordenar_produtos
 
 
 # Create your views here.
@@ -37,8 +37,10 @@ def loja(request, filtro=None):
     tamanhos = itens.values_list('tamanho', flat=True).distinct()
     ids_categorias = produtos.values_list('categoria', flat=True).distinct()
     categorias = Categoria.objects.filter(id__in=ids_categorias)
-    ids_cores = itens.values_list('cor', flat=True).distinct()
     minimo, maximo = preco_minimo_maximo(produtos)
+
+    ordem = request.GET.get('ordem', 'menor-preco')
+    produtos = ordenar_produtos(produtos, ordem)
 
     context = {
         'produtos': produtos,
